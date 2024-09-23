@@ -1,0 +1,107 @@
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+                    
+                    body {
+                        font-family: Arial, Helvetica, sans-serif;
+                        background-color: #f4f4f4;
+                    }
+                    
+                    header {
+                        background-color: #333;
+                        color: #fff;
+                        padding: 20px 0;
+                        text-align: center;
+                    }
+                    
+                    header nav ul {
+                        list-style: none;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    
+                    header nav ul li {
+                        margin: 0 15px;
+                    }
+                    
+                    header nav ul li a {
+                        color: white;
+                        text-decoration: none;
+                    }
+                    
+                    .carousel {
+                        position: relative;
+                        max-width: 100%;
+                        margin: 20px auto;
+                    }
+                    
+                    .carousel-container {
+                        display: flex;
+                        overflow: hidden;
+                    }
+                    
+                    .carousel-item {
+                        min-width: 100%;
+                        transition: 0.5s ease;
+                    }
+                    
+                    .carousel img {
+                        width: 100%;
+                        height: auto;
+                    }
+                    
+                    .prev,
+                    .next {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background-color: rgba(0, 0, 0, 0.5);
+                        color: white;
+                        border: none;
+                        padding: 10px;
+                        cursor: pointer;
+                    }
+                    
+                    .prev {
+                        left: 0;
+                    }
+                    
+                    .next {
+                        right: 0;
+                    }
+                    
+                    .promotions,
+                    .offers {
+                        margin: 40px auto;
+                        max-width: 1200px;
+                        text-align: center;
+                    }
+                    
+                    .promotions h2,
+                    .offers h2 {
+                        margin-bottom: 20px;
+                    }
+                    
+                    .promotion-item,
+                    .offer-item {
+                        margin: 20px;
+                        padding: 20px;
+                        background-color: #fff;
+                        border: 1px solid #ddd;
+                        display: inline-block;
+                    }
+                    
+                    .offer-item img {
+                        width: 100px;
+                        height: auto;
+                    }
+                    
+                    footer {
+                        background-color: #333;
+                        color: #fff;
+                        text-align: center;
+                        padding: 20px 0;
+                        margin-top: 40px;
+                    }
