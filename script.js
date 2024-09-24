@@ -1,6 +1,8 @@
 let currentIndex = 0;
 const items = document.querySelectorAll('.carousel-item');
-const cart = [];
+const cart = []; // Array para el carrito
+let total = 0; // Variable para el total
+
 const products = [{
         id: 1,
         name: "Auriculares Inalámbricos",
@@ -68,13 +70,15 @@ function displayProducts() {
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     if (product) {
-        cart.push(product);
+        cart.push(product); // Añadir el producto al carrito
+        total += product.price; // Actualizar el total
         updateCartUI();
     }
 }
 
 function removeFromCart(index) {
-    cart.splice(index, 1);
+    const product = cart.splice(index, 1)[0]; // Eliminar el producto del carrito
+    total -= product.price; // Restar el precio del total
     updateCartUI();
 }
 
@@ -82,8 +86,7 @@ function updateCartUI() {
     const cartItemsContainer = document.getElementById('cart-items');
     const totalAmount = document.getElementById('total-amount');
 
-    cartItemsContainer.innerHTML = '';
-    let total = 0;
+    cartItemsContainer.innerHTML = ''; // Limpiar el contenido previo
 
     cart.forEach((item, index) => {
         const cartItem = document.createElement('div');
@@ -93,13 +96,12 @@ function updateCartUI() {
             <button onclick="removeFromCart(${index})">Eliminar</button>
         `;
         cartItemsContainer.appendChild(cartItem);
-        total += item.price;
     });
 
-    totalAmount.textContent = total.toFixed(2);
+    totalAmount.textContent = total.toFixed(2); // Actualizar el total
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentIndex);
-    displayProducts();
+    displayProducts(); // Mostrar productos al cargar la página
 });
