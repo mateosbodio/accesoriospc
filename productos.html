@@ -22,35 +22,35 @@
         </nav>
     </header>
 
-    <section class="products">
-        <h2>Nuestros Productos</h2>
-        <div class="product-item">
-            <img src="img/teclado.jpg" alt="Teclado Mecánico">
-            <h3>Teclado Mecánico</h3>
-            <p>$50.00</p>
-            <a href="#" class="btn">Añadir al carrito</a>
-        </div>
-        <div class="product-item">
-            <img src="img/mouse.jpg" alt="Mouse Gamer">
-            <h3>Mouse Gamer</h3>
-            <p>$25.00</p>
-            <a href="#" class="btn">Añadir al carrito</a>
-        </div>
-    </section>
-    <section>
-        <div class="cart-container">
-            <h2>Tu Carrito</h2>
-            <div class="cart-items" id="cart-items">
-                <!-- Productos seleccionados se mostrarán aquí -->
+    <main>
+        <section class="products" id="celulares">
+            <h2>Accesorios para Celulares</h2>
+            <div class="product-list" id="product-list-cellphones"></div>
+        </section>
+
+        <section class="products" id="computadoras">
+            <h2>Accesorios para Computadoras</h2>
+            <div class="product-list" id="product-list-computers"></div>
+        </section>
+
+        <section>
+            <div class="cart-container">
+                <h2>Tu Carrito</h2>
+                <div class="cart-items" id="cart-items">
+                    <!-- Productos seleccionados se mostrarán aquí -->
+                </div>
+                <div class="total">
+                    Total: $<span id="total-amount">0.00</span>
+                </div>
             </div>
-            <div class="total">
-                Total: $<span id="total-amount">0.00</span>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
     <footer>
         <p>&copy; 2024 Tienda de Accesorios. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 
