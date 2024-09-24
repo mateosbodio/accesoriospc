@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Productos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="products">
+        <h2>Nuestros Productos</h2>
+        <div class="product-item">
+            <img src="img/teclado.jpg" alt="Teclado Mecánico">
+            <h3>Teclado Mecánico</h3>
+            <p>$50.00</p>
+            <a href="#" class="btn">Añadir al carrito</a>
+        </div>
+        <div class="product-item">
+            <img src="img/mouse.jpg" alt="Mouse Gamer">
+            <h3>Mouse Gamer</h3>
+            <p>$25.00</p>
+            <a href="#" class="btn">Añadir al carrito</a>
+        </div>
+    </section>
+    <section>
+        <div class="cart-container">
+            <h2>Tu Carrito</h2>
+            <div class="cart-items" id="cart-items">
+                <!-- Productos seleccionados se mostrarán aquí -->
+            </div>
+            <div class="total">
+                Total: $<span id="total-amount">0.00</span>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Tienda de Accesorios. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

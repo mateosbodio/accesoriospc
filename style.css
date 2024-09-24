@@ -4,77 +4,181 @@
     box-sizing: border-box;
 }
 
+
+/* Tipografía y colores */
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
+    /* Fondo claro */
     color: #333;
+    /* Texto principal */
     line-height: 1.6;
 }
 
-header {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 20px 0;
+h1 {
+    background-color: grey;
     text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    color: #2c3e50;
+    /* Color más oscuro para encabezados */
+    margin-bottom: 20px;
 }
 
-header h1 {
-    font-size: 2.5rem;
+h2,
+h3 {
+    color: #34495e;
+    /* Color gris oscuro para títulos */
 }
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
-
-header nav ul li {
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: white;
+a {
     text-decoration: none;
-    font-size: 1.2rem;
+    color: #2980b9;
+    /* Color de enlaces más formal */
+}
+
+a:hover {
+    text-decoration: underline;
+    /* Subrayar enlaces al pasar el mouse */
+}
+
+
+/* Estilos para productos */
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    /* Permitir que los productos se ajusten en múltiples líneas */
+}
+
+.product {
+    border: 1px solid #bdc3c7;
+    /* Borde gris claro */
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    /* Bordes más suaves */
+    background-color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Añadir efectos de hover */
+    width: 300px;
+    /* Establecer un ancho fijo */
+    margin: 10px;
+    /* Espaciado entre productos */
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    /* Elevar el producto al pasar el mouse */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Sombra al pasar el mouse */
+}
+
+.product button {
+    background-color: #27ae60;
+    /* Verde formal */
+    color: white;
+    border: none;
     padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
-
-header nav ul li a:hover {
-    background-color: #3a8c40;
+    cursor: pointer;
     border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    /* Transición al cambiar de color */
+}
+
+.product button:hover {
+    background-color: #219150;
+    /* Color más oscuro al pasar el mouse */
+}
+
+.cart-container {
+    max-width: 600px;
+    margin: 20px auto;
+    /* Añadir margen superior */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #bdc3c7;
+    /* Separador más formal */
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+    /* Eliminar borde del último artículo */
+}
+
+.cart-item p {
+    margin: 0;
+    color: #2c3e50;
+    /* Color del texto del artículo */
+}
+
+.cart-item button {
+    background-color: #c0392b;
+    /* Rojo formal */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Transición al cambiar de color */
+}
+
+.cart-item button:hover {
+    background-color: #a93226;
+    /* Color más oscuro al pasar el mouse */
+}
+
+.total {
+    text-align: right;
+    font-size: 20px;
+    /* Aumentar el tamaño de la fuente del total */
+    font-weight: bold;
+    margin-top: 10px;
+    /* Añadir margen superior */
+    color: #2980b9;
+    /* Color azul para el total */
 }
 
 
-/* Estilos del carrusel */
+/* Carrusel */
 
 .carousel {
-    position: relative;
     max-width: 100%;
-    margin: 40px auto;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    min-width: 100%;
+    margin: 30px auto;
+    position: relative;
+    border-radius: 10px;
     overflow: hidden;
 }
 
-.carousel-item img {
+.carousel img {
     width: 100%;
-    height: auto;
-    border-radius: 15px;
+    height: 400px;
     object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    /* Bordes más suaves */
+}
+
+.carousel img:hover {
+    transform: scale(1.05);
+    /* Efecto de zoom al pasar el mouse */
 }
 
 
@@ -87,139 +191,75 @@ header nav ul li a:hover {
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    border: none;
-    padding: 15px;
-    cursor: pointer;
+    padding: 10px;
     font-size: 1.5rem;
     border-radius: 50%;
+    cursor: pointer;
+    border: none;
     transition: background-color 0.3s ease;
+    /* Transición al cambiar de color */
 }
 
 .prev:hover,
 .next:hover {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Color más oscuro al pasar el mouse */
 }
 
 .prev {
-    left: 10px;
+    left: 20px;
 }
 
 .next {
-    right: 10px;
+    right: 20px;
 }
 
 
-/* Estilos de las promociones */
+/* Botones de acción */
 
-.promotions {
-    background-color: #fff;
-    padding: 50px 0;
-    margin: 40px 0;
-    text-align: center;
+.btn {
+    background-color: #007bff;
+    /* Azul brillante */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Transición al cambiar de color */
 }
 
-.promotions h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #333;
+.btn:hover {
+    background-color: #0056b3;
+    /* Color más oscuro al pasar el mouse */
 }
-
-.promotion-item {
-    display: inline-block;
-    margin: 15px;
-    padding: 20px;
-    width: 300px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.promotion-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.promotion-item h3 {
-    color: #4CAF50;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
-
-/* Estilos de las ofertas */
-
-.offers {
-    background-color: #f4f4f4;
-    padding: 50px 0;
-    margin: 40px 0;
-    text-align: center;
-}
-
-.offers h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-.offer-item {
-    display: inline-block;
-    margin: 15px;
-    padding: 20px;
-    width: 250px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.offer-item img {
-    width: 100px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.offer-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Estilos del pie de página */
 
 footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
+    background-color: #2c3e50;
+    /* Azul oscuro */
+    color: white;
+    /* Color blanco para el texto */
     padding: 20px 0;
-    margin-top: 40px;
-}
-
-footer p {
-    font-size: 1rem;
-    color: #bbb;
+    text-align: center;
+    position: relative;
+    /* Para futuras mejoras */
+    margin-top: 20px;
+    /* Espaciado superior */
 }
 
 @media (max-width: 768px) {
-    .promotion-item,
-    .offer-item {
-        width: 90%;
-        margin: 10px auto;
-    }
-    header nav ul {
+    .products {
         flex-direction: column;
+        /* Cambiar la dirección de los productos en pantallas pequeñas */
+        align-items: center;
+        /* Centrar los productos */
     }
-    header nav ul li {
-        margin: 10px 0;
+    .carousel img {
+        height: 300px;
+        /* Ajustar la altura de la imagen del carrusel */
     }
-    .prev,
-    .next {
-        padding: 10px;
-        font-size: 1.2rem;
-    }
-    header h1 {
-        font-size: 2rem;
+    .cart-container {
+        width: 90%;
+        /* Ampliar el ancho del carrito en pantallas pequeñas */
     }
 }
