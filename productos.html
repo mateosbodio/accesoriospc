@@ -11,7 +11,7 @@
 <body>
 
     <header>
-        <h1>Productos</h1>
+        <h1>Tienda de Accesorios</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -33,15 +33,22 @@
             <div class="product-list" id="product-list-computers"></div>
         </section>
 
-        <section>
+        <section class="cart-section">
             <div class="cart-container">
                 <h2>Tu Carrito</h2>
-                <div class="cart-items" id="cart-items">
-                    <!-- Productos seleccionados se mostrarán aquí -->
+                <div class="cart-items" id="cart-items"></div>
+                <div class="total">Total: $<span id="total-amount">0.00</span></div>
+
+                <div class="shipping-options">
+                    <h3>Método de Envío</h3>
+                    <select id="shipping-method">
+                        <option value="standard">Envío Estándar ($5.00)</option>
+                        <option value="express">Envío Exprés ($10.00)</option>
+                    </select>
                 </div>
-                <div class="total">
-                    Total: $<span id="total-amount">0.00</span>
-                </div>
+
+                <button id="purchase-button" class="btn">Comprar</button>
+                <p id="purchase-message" style="color: green;"></p>
             </div>
         </section>
     </main>
