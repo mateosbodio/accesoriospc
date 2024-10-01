@@ -4,99 +4,111 @@
     box-sizing: border-box;
 }
 
-
-/* Tipografía y colores */
-
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
-    /* Fondo claro */
     color: #333;
-    /* Texto principal */
     line-height: 1.6;
 }
 
-h1 {
-    background-color: grey;
+header {
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    color: #2c3e50;
-    /* Color más oscuro para encabezados */
-    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #575757;
+}
+
+h1 {
+    margin: 20px 0;
+    background-color: grey;
 }
 
 h2,
 h3 {
     color: #34495e;
-    /* Color gris oscuro para títulos */
+    margin-bottom: 15px;
 }
 
-a {
-    text-decoration: none;
-    color: #2980b9;
-    /* Color de enlaces más formal */
-}
-
-a:hover {
-    text-decoration: underline;
-    /* Subrayar enlaces al pasar el mouse */
-}
-
-
-/* Estilos para productos */
-
-.products {
+.products,
+.promotions {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     flex-wrap: wrap;
-    /* Permitir que los productos se ajusten en múltiples líneas */
 }
 
-.product {
+.product,
+.promotion-item {
     border: 1px solid #bdc3c7;
-    /* Borde gris claro */
     padding: 20px;
     text-align: center;
     border-radius: 8px;
-    /* Bordes más suaves */
     background-color: #fff;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    /* Añadir efectos de hover */
-    width: 300px;
-    /* Establecer un ancho fijo */
-    margin: 10px;
-    /* Espaciado entre productos */
+    width: 280px;
+    margin: 20px;
 }
 
-.product:hover {
+.product:hover,
+.promotion-item:hover {
     transform: translateY(-5px);
-    /* Elevar el producto al pasar el mouse */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    /* Sombra al pasar el mouse */
 }
 
-.product button {
+.product img,
+.promotion-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product button,
+.promotion-details .btn {
     background-color: #27ae60;
-    /* Verde formal */
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 20px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     transition: background-color 0.3s ease;
-    /* Transición al cambiar de color */
+    width: 100%;
 }
 
-.product button:hover {
+.product button:hover,
+.promotion-details .btn:hover {
     background-color: #219150;
-    /* Color más oscuro al pasar el mouse */
 }
 
 .cart-container {
     max-width: 600px;
-    margin: 20px auto;
-    /* Añadir margen superior */
+    margin: 40px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -110,180 +122,244 @@ a:hover {
 .cart-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 10px;
     border-bottom: 1px solid #bdc3c7;
-    /* Separador más formal */
 }
 
 .cart-item:last-child {
     border-bottom: none;
-    /* Eliminar borde del último artículo */
 }
 
 .cart-item p {
     margin: 0;
     color: #2c3e50;
-    /* Color del texto del artículo */
 }
 
 .cart-item button {
     background-color: #c0392b;
-    /* Rojo formal */
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    /* Transición al cambiar de color */
 }
 
 .cart-item button:hover {
     background-color: #a93226;
-    /* Color más oscuro al pasar el mouse */
 }
 
 .total {
     text-align: right;
     font-size: 20px;
-    /* Aumentar el tamaño de la fuente del total */
     font-weight: bold;
-    margin-top: 10px;
-    /* Añadir margen superior */
+    margin-top: 15px;
     color: #2980b9;
-    /* Color azul para el total */
 }
 
-
-/* Carrusel */
-
 .carousel {
-    max-width: 100%;
-    margin: 30px auto;
+    max-width: 800px;
+    margin: 40px auto;
     position: relative;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.carousel img {
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: none;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-item img {
     width: 100%;
-    height: 400px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    max-height: 400px;
+    object-fit: contain;
     border-radius: 10px;
-    border: 1px solid #ddd;
-    /* Bordes más suaves */
 }
-
-.carousel img:hover {
-    transform: scale(1.05);
-    /* Efecto de zoom al pasar el mouse */
-}
-
-
-/* Botones del carrusel */
 
 .prev,
 .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8);
     border: none;
-    transition: background-color 0.3s ease;
-    /* Transición al cambiar de color */
+    cursor: pointer;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .prev:hover,
 .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    /* Color más oscuro al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .prev {
-    left: 20px;
+    left: 10px;
 }
 
 .next {
-    right: 20px;
+    right: 10px;
 }
 
-
-/* Botones de acción */
-
-.btn {
+.btn,
+#purchase-button {
     background-color: #007bff;
-    /* Azul brillante */
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    /* Transición al cambiar de color */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
 }
 
-.btn:hover {
+.btn:hover,
+#purchase-button:hover {
     background-color: #0056b3;
-    /* Color más oscuro al pasar el mouse */
 }
 
 footer {
     background-color: #2c3e50;
-    /* Azul oscuro */
     color: white;
-    /* Color blanco para el texto */
     padding: 20px 0;
     text-align: center;
-    position: relative;
-    /* Para futuras mejoras */
-    margin-top: 20px;
-    /* Espaciado superior */
+    margin-top: 40px;
 }
 
 @media (max-width: 768px) {
-    .products {
+    .products,
+    .promotions {
         flex-direction: column;
-        /* Cambiar la dirección de los productos en pantallas pequeñas */
         align-items: center;
-        /* Centrar los productos */
     }
     .carousel img {
-        height: 300px;
-        /* Ajustar la altura de la imagen del carrusel */
+        height: 250px;
     }
     .cart-container {
         width: 90%;
-        /* Ampliar el ancho del carrito en pantallas pequeñas */
+    }
+    .product,
+    .promotion-item {
+        margin: 10px 0;
+        width: 90%;
     }
 }
 
 .shipping-options {
-    margin: 20px 0;
+    margin: 40px 0;
 }
 
-#purchase-button {
-    background-color: #007bff;
-    /* Azul */
+.contact {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.contact h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-weight: bold;
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.contact textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.contact button {
+    background-color: #27ae60;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
 }
 
-#purchase-button:hover {
-    background-color: #0056b3;
-    /* Azul más oscuro */
+.contact button:hover {
+    background-color: #219150;
 }
 
-#purchase-message {
-    margin-top: 10px;
-    font-weight: bold;
+h2.visually-hidden {
+    display: none;
+}
+
+.promotion-item img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.product-item,
+.promotion-item {
+    margin-bottom: 20px;
+}
+
+.carousel {
+    margin-bottom: 40px;
+}
+
+.carousel-item {
+    margin-bottom: 10px;
+}
+
+.cart-item {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.contact label {
+    margin-bottom: 8px;
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+    margin-bottom: 15px;
+}
+
+.btn,
+#purchase-button {
+    margin-top: 20px;
 }

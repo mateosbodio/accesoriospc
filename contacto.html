@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Asegúrate de tener este archivo -->
 </head>
 
 <body>
@@ -24,7 +25,7 @@
 
     <section class="contact">
         <h2>Contáctanos</h2>
-        <form action="#" method="POST">
+        <form id="contact-form">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required>
 
@@ -36,12 +37,31 @@
 
             <button type="submit" class="btn">Enviar</button>
         </form>
+        <div id="response-message" style="display: none;"></div>
     </section>
 
     <footer>
         <p>&copy; 2024 Tienda de Accesorios. Todos los derechos reservados.</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contact-form');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // Evita el comportamiento por defecto del formulario
+                showSuccessMessage(); // Muestra el mensaje de éxito
+                form.reset(); // Reinicia el formulario
+            });
+        });
+
+        function showSuccessMessage() {
+            const responseMessage = document.getElementById('response-message');
+            responseMessage.innerText = "¡Mensaje enviado con éxito!";
+            responseMessage.style.display = 'block'; // Muestra el mensaje
+        }
+    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

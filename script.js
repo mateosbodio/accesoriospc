@@ -1,23 +1,26 @@
-// Inicializar la página
 document.addEventListener('DOMContentLoaded', () => {
     displayProducts();
 
-    // Evento para el botón de compra
-    document.getElementById('purchase-button').addEventListener('click', () => {
-        completePurchase();
-    });
+    const purchaseButton = document.getElementById('purchase-button');
+    if (purchaseButton) {
+        purchaseButton.addEventListener('click', () => {
+            completePurchase();
+        });
+    }
+
+    document.querySelector('.prev').addEventListener('click', () => moveCarousel(-1));
+    document.querySelector('.next').addEventListener('click', () => moveCarousel(1));
 });
 
 let cart = [];
 let total = 0;
 
-// Función para mostrar productos
 function displayProducts() {
     const products = [
-        { id: 1, name: "Auriculares Inalámbricos", price: 30.00, category: "celulares", image: "img/auricular.jpg" },
-        { id: 2, name: "Cargador Rápido", price: 15.00, category: "celulares", image: "img/cargador.jpg" },
-        { id: 3, name: "Teclado Mecánico", price: 50.00, category: "computadoras", image: "img/teclado.jpg" },
-        { id: 4, name: "Mouse Gamer", price: 25.00, category: "computadoras", image: "img/mouse.jpg" }
+        { id: 1, name: "Auriculares Inalámbricos", price: 30.00, category: "celulares", image: "img/Auriculares_Inalambrico.jpg" },
+        { id: 2, name: "Cargador Rápido", price: 15.00, category: "celulares", image: "img/Cargador_Carga_Rapida.jpg" },
+        { id: 3, name: "Teclado Mecánico", price: 50.00, category: "computadoras", image: "img/Teclado_Mecanico_Logitech_ProXG.jpg" },
+        { id: 4, name: "Mouse Gamer", price: 25.00, category: "computadoras", image: "img/Mouse_Gamer_Logitech_G502.jpg" }
     ];
 
     products.forEach(product => {
@@ -29,7 +32,6 @@ function displayProducts() {
                 <button class="btn" onclick="addToCart(${product.id})">Añadir al carrito</button>
             </div>
         `;
-
         if (product.category === "celulares") {
             document.getElementById('product-list-cellphones').innerHTML += productHTML;
         } else if (product.category === "computadoras") {
@@ -40,26 +42,32 @@ function displayProducts() {
 
 function addToCart(productId) {
     const products = [
-        { id: 1, name: "Auriculares Inalámbricos", price: 30.00 },
-        { id: 2, name: "Cargador Rápido", price: 15.00 },
-        { id: 3, name: "Teclado Mecánico", price: 50.00 },
-        { id: 4, name: "Mouse Gamer", price: 25.00 }
+        { id: 1, name: "Auriculares Inalámbricos", price: 30.00, image: "img/Auriculares_Inalambrico.jpg" },
+        { id: 2, name: "Cargador Rápido", price: 15.00, image: "img/Cargador_Carga_Rapida.jpg" },
+        { id: 3, name: "Teclado Mecánico", price: 50.00, image: "img/Teclado_Mecanico_Logitech_ProXG.jpg" },
+        { id: 4, name: "Mouse Gamer", price: 25.00, image: "img/Mouse_Gamer_Logitech_G502.jpg" }
     ];
-
     const product = products.find(p => p.id === productId);
-    cart.push(product);
-    total += product.price;
-    updateCartUI();
+    if (product) {
+        cart.push(product);
+        total += product.price;
+        updateCartUI();
+    }
 }
 
 function updateCartUI() {
     const cartItemsContainer = document.getElementById('cart-items');
-    cartItemsContainer.innerHTML = ''; // Limpiar carrito
+    cartItemsContainer.innerHTML = '';
     cart.forEach(item => {
-        const cartItemHTML = `<p>${item.name} - $${item.price.toFixed(2)}</p>`;
+        const cartItemHTML = `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
+                <p>${item.name} - $${item.price.toFixed(2)}</p>
+            </div>
+        `;
         cartItemsContainer.innerHTML += cartItemHTML;
     });
-    document.getElementById('total-amount').innerText = total.toFixed(2);
+    document.getElementById('total-amount').innerText = `Total: $${total.toFixed(2)}`;
 }
 
 function completePurchase() {
@@ -68,15 +76,32 @@ function completePurchase() {
         return;
     }
 
-    const shippingMethod = document.getElementById('shipping-method').value;
+    const shippingMethod = document.getElementById('shipping-method') ? document.getElementById('shipping-method').value : 'standard';
     let shippingCost = (shippingMethod === "standard") ? 5.00 : 10.00;
-
     const totalAmountWithShipping = total + shippingCost;
-
     document.getElementById('purchase-message').innerText = `Compra realizada con éxito! Total: $${totalAmountWithShipping.toFixed(2)}.`;
 
-    // Limpiar carrito
     cart = [];
     total = 0;
     updateCartUI();
+}
+
+let currentIndex = 0;
+const items = document.querySelectorAll('.carousel-item');
+
+function showSlide(index) {
+    if (index >= items.length) currentIndex = 0;
+    if (index < 0) currentIndex = items.length - 1;
+
+    items.forEach((item, i) => {
+        item.classList.remove('active');
+        if (i === currentIndex) {
+            item.classList.add('active');
+        }
+    });
+}
+
+function moveCarousel(step) {
+    currentIndex += step;
+    showSlide(currentIndex);
 }
