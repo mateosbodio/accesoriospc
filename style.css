@@ -34,8 +34,8 @@ nav a {
     color: #fff;
     text-decoration: none;
     padding: 10px 15px;
-    transition: background 0.3s, color 0.3s;
     border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
 }
 
 nav a:hover {
@@ -63,14 +63,14 @@ h3 {
 
 .product,
 .promotion-item {
-    border: 1px solid #bdc3c7;
+    width: 280px;
+    margin: 20px;
     padding: 20px;
     text-align: center;
+    border: 1px solid #bdc3c7;
     border-radius: 8px;
     background-color: #fff;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 280px;
-    margin: 20px;
 }
 
 .product:hover,
@@ -88,30 +88,32 @@ h3 {
 }
 
 .product button,
-.promotion-details .btn {
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    border-radius: 5px;
+.promotion-details .btn,
+#purchase-button {
+    width: 100%;
     margin-top: 15px;
     margin-bottom: 15px;
+    padding: 12px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #27ae60;
     transition: background-color 0.3s ease;
-    width: 100%;
 }
 
 .product button:hover,
-.promotion-details .btn:hover {
+.promotion-details .btn:hover,
+#purchase-button:hover {
     background-color: #219150;
 }
 
 .cart-container {
     max-width: 600px;
     margin: 40px auto;
-    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
+    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -122,8 +124,8 @@ h3 {
 .cart-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
     padding: 10px;
+    margin-bottom: 15px;
     border-bottom: 1px solid #bdc3c7;
 }
 
@@ -137,12 +139,12 @@ h3 {
 }
 
 .cart-item button {
-    background-color: #c0392b;
+    padding: 8px 12px;
     color: white;
     border: none;
-    padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #c0392b;
     transition: background-color 0.3s ease;
 }
 
@@ -154,16 +156,16 @@ h3 {
     text-align: right;
     font-size: 20px;
     font-weight: bold;
-    margin-top: 15px;
     color: #2980b9;
+    margin-top: 15px;
 }
 
 .carousel {
     max-width: 800px;
     margin: 40px auto;
+    overflow: hidden;
     position: relative;
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -174,8 +176,8 @@ h3 {
 
 .carousel-item {
     min-width: 100%;
-    box-sizing: border-box;
     display: none;
+    box-sizing: border-box;
 }
 
 .carousel-item.active {
@@ -191,21 +193,17 @@ h3 {
 
 .prev,
 .next {
+    cursor: pointer;
+    font-size: 24px;
+    color: #000;
+    border: none;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 20px;
-    border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.prev:hover,
-.next:hover {
-    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .prev {
@@ -216,23 +214,9 @@ h3 {
     right: 10px;
 }
 
-.btn,
-#purchase-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    width: 100%;
-}
-
-.btn:hover,
-#purchase-button:hover {
-    background-color: #0056b3;
+.prev:hover,
+.next:hover {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 footer {
@@ -241,29 +225,6 @@ footer {
     padding: 20px 0;
     text-align: center;
     margin-top: 40px;
-}
-
-@media (max-width: 768px) {
-    .products,
-    .promotions {
-        flex-direction: column;
-        align-items: center;
-    }
-    .carousel img {
-        height: 250px;
-    }
-    .cart-container {
-        width: 90%;
-    }
-    .product,
-    .promotion-item {
-        margin: 10px 0;
-        width: 90%;
-    }
-}
-
-.shipping-options {
-    margin: 40px 0;
 }
 
 .contact {
@@ -295,25 +256,25 @@ footer {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .contact textarea {
-    resize: vertical;
     height: 150px;
+    resize: vertical;
 }
 
 .contact button {
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
     margin-top: 15px;
     margin-bottom: 15px;
-    width: 100%;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #27ae60;
+    transition: background-color 0.3s ease;
 }
 
 .contact button:hover {
@@ -324,42 +285,22 @@ h2.visually-hidden {
     display: none;
 }
 
-.promotion-item img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-.product-item,
-.promotion-item {
-    margin-bottom: 20px;
-}
-
-.carousel {
-    margin-bottom: 40px;
-}
-
-.carousel-item {
-    margin-bottom: 10px;
-}
-
-.cart-item {
-    margin-bottom: 15px;
-    padding: 10px;
-}
-
-.contact label {
-    margin-bottom: 8px;
-}
-
-.contact input[type="text"],
-.contact input[type="email"],
-.contact textarea {
-    margin-bottom: 15px;
-}
-
-.btn,
-#purchase-button {
-    margin-top: 20px;
+@media (max-width: 768px) {
+    .products,
+    .promotions {
+        flex-direction: column;
+        align-items: center;
+    }
+    .carousel img {
+        height: 250px;
+    }
+    .cart-container,
+    .product,
+    .promotion-item {
+        width: 90%;
+    }
+    .product,
+    .promotion-item {
+        margin: 10px 0;
+    }
 }
