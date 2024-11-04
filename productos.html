@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Tienda de Accesorios</title>
+    <title>Productos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <h1>Accesorios para Celulares y Computadoras</h1>
+        <h1>Productos</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -21,48 +21,30 @@
         </nav>
     </header>
 
-    <main>
-        <!-- Sección de productos para celulares -->
-        <section class="products" id="celulares">
-            <h2>Accesorios para Celulares</h2>
-            <div class="product-list" id="product-list-cellphones">
-                <!-- Los productos para celulares se insertarán aquí dinámicamente -->
-            </div>
-        </section>
+    <section class="products">
+        <h2>Lista de Productos</h2>
+        <div id="product-list-celulares" class="product-list"></div>
+        <div id="product-list-computadoras" class="product-list"></div>
+    </section>
 
-        <!-- Sección de productos para computadoras -->
-        <section class="products" id="computadoras">
-            <h2>Accesorios para Computadoras</h2>
-            <div class="product-list" id="product-list-computers">
-                <!-- Los productos para computadoras se insertarán aquí dinámicamente -->
-            </div>
-        </section>
+    <section class="carrito">
+        <div class="products">
+            <h2>Productos en el Carrito</h2>
+            <div id="product-list-celulares-cart" class="product-list"></div>
+            <div id="product-list-computadoras-cart" class="product-list"></div>
+        </div>
 
-        <!-- Sección del carrito -->
-        <section class="cart-section">
-            <div class="cart-container">
-                <h2>Tu Carrito</h2>
-                <div class="cart-items" id="cart-items"></div>
-                <div class="total">Total: $<span id="total-amount">0.00</span></div>
-
-                <div class="shipping-options">
-                    <h3>Método de Envío</h3>
-                    <select id="shipping-method">
-                        <option value="standard">Envío Estándar ($5.00)</option>
-                        <option value="express">Envío Exprés ($10.00)</option>
-                    </select>
-                </div>
-
-                <button id="purchase-button" class="btn">Comprar</button>
-                <p id="purchase-message" style="color: green;"></p>
-            </div>
-        </section>
-    </main>
+        <div class="cart-section">
+            <h2>Carrito</h2>
+            <div id="cart-items"></div>
+            <p>Total: $<span id="total-amount">0.00</span></p>
+            <button id="purchase-button" class="btn">Finalizar Compra</button>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2024 Tienda de Accesorios. Todos los derechos reservados.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 

@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Asegúrate de tener este archivo -->
 </head>
 
 <body>
-
     <header>
         <h1>Contacto</h1>
         <nav>
@@ -49,19 +47,20 @@
             const form = document.getElementById('contact-form');
 
             form.addEventListener('submit', (event) => {
-                event.preventDefault(); // Evita el comportamiento por defecto del formulario
-                showSuccessMessage(); // Muestra el mensaje de éxito
-                form.reset(); // Reinicia el formulario
+                event.preventDefault();
+                showSuccessMessage();
+                form.reset();
             });
         });
 
         function showSuccessMessage() {
             const responseMessage = document.getElementById('response-message');
             responseMessage.innerText = "¡Mensaje enviado con éxito!";
-            responseMessage.style.display = 'block'; // Muestra el mensaje
+            responseMessage.style.display = 'block';
         }
     </script>
     <script src="script.js"></script>
+
 </body>
 
 </html>

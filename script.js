@@ -8,105 +8,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('.prev').addEventListener('click', () => moveCarousel(-1));
     document.querySelector('.next').addEventListener('click', () => moveCarousel(1));
+
+    document.getElementById('carouselImage').src = images[currentIndex];
 });
+
+const products = [
+    { id: 1, name: "Auriculares Inalámbricos", price: 30.00, category: "celulares", image: "img/Auriculares_Inalambrico.jpg" },
+    { id: 2, name: "Cargador Rápido", price: 15.00, category: "celulares", image: "img/Cargador_Carga_Rapida.jpg" },
+    { id: 3, name: "Teclado Mecánico", price: 45.00, category: "computadoras", image: "img/Teclado_Mecanico_Logitech_ProXG.jpg" },
+    { id: 4, name: "Ratón Gamer", price: 25.00, category: "computadoras", image: "img/Mouse_Gamer_Logitech_G502.jpg" }
+];
 
 let cart = [];
 let total = 0;
+let currentIndex = 0;
+
+const images = ["img/Carousel1.jpg", "img/Carousel2.jpg", "img/Carousel3.jpg", "img/Carousel4.jpg"];
 
 function displayProducts() {
-    const products = [
-        { id: 1, name: "Auriculares Inalámbricos", price: 30.00, category: "celulares", image: "img/Auriculares_Inalambrico.jpg" },
-        { id: 2, name: "Cargador Rápido", price: 15.00, category: "celulares", image: "img/Cargador_Carga_Rapida.jpg" },
-        { id: 3, name: "Teclado Mecánico", price: 50.00, category: "computadoras", image: "img/Teclado_Mecanico_Logitech_ProXG.jpg" },
-        { id: 4, name: "Mouse Gamer", price: 25.00, category: "computadoras", image: "img/Mouse_Gamer_Logitech_G502.jpg" }
-    ];
-
     products.forEach(product => {
-        const productHTML = `
-            <div class="product-item">
-                <img src="${product.image}" alt="${product.name}">
+        const productList = document.getElementById(`product-list-${product.category}`);
+        if (productList) {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product-item';
+            productDiv.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-image">
                 <h3>${product.name}</h3>
                 <p>$${product.price.toFixed(2)}</p>
-                <button class="btn" onclick="addToCart(${product.id})">Añadir al carrito</button>
-            </div>
-        `;
-
-        if (product.category === "celulares") {
-            document.getElementById('product-list-cellphones').innerHTML += productHTML;
-        } else if (product.category === "computadoras") {
-            document.getElementById('product-list-computers').innerHTML += productHTML;
+                <button onclick="addToCart(${product.id})" class="btn">Agregar al Carrito</button>
+            `;
+            productList.appendChild(productDiv);
         }
     });
 }
 
 function addToCart(productId) {
-    const products = [
-        { id: 1, name: "Auriculares Inalámbricos", price: 30.00, image: "img/Auriculares_Inalambrico.jpg" },
-        { id: 2, name: "Cargador Rápido", price: 15.00, image: "img/Cargador_Carga_Rapida.jpg" },
-        { id: 3, name: "Teclado Mecánico", price: 50.00, image: "img/Teclado_Mecanico_Logitech_ProXG.jpg" },
-        { id: 4, name: "Mouse Gamer", price: 25.00, image: "img/Mouse_Gamer_Logitech_G502.jpg" }
-    ];
-
     const product = products.find(p => p.id === productId);
     if (product) {
         cart.push(product);
-        total += product.price;
-        updateCartUI();
+        updateCart();
     }
 }
 
-function updateCartUI() {
+function updateCart() {
     const cartItemsContainer = document.getElementById('cart-items');
     cartItemsContainer.innerHTML = '';
+    total = 0;
 
     cart.forEach(item => {
-        const cartItemHTML = `
-            <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
-                <p>${item.name} - $${item.price.toFixed(2)}</p>
-            </div>
-        `;
-        cartItemsContainer.innerHTML += cartItemHTML;
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `<span>${item.name} - $${item.price.toFixed(2)}</span>`;
+        cartItemsContainer.appendChild(cartItem);
+        total += item.price;
     });
 
-    document.getElementById('total-amount').innerText = `Total: $${total.toFixed(2)}`;
+    document.getElementById('total-amount').innerText = `$${total.toFixed(2)}`;
 }
 
 function completePurchase() {
     if (cart.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
+        alert("El carrito está vacío.");
+    } else {
+        alert(`Compra completada por un total de $${total.toFixed(2)}`);
+        cart = [];
+        updateCart();
     }
-
-    const shippingMethod = document.getElementById('shipping-method') ? document.getElementById('shipping-method').value : 'standard';
-    const shippingCost = (shippingMethod === "standard") ? 5.00 : 10.00;
-    const totalAmountWithShipping = total + shippingCost;
-
-    document.getElementById('purchase-message').innerText = `Compra realizada con éxito! Total: $${totalAmountWithShipping.toFixed(2)}.`;
-
-    cart = [];
-    total = 0;
-    updateCartUI();
-}
-
-const images = [
-    { src: "img/Auriculares_Inalambrico.jpg", alt: "Auriculares Inalámbricos" },
-    { src: "img/Cargador_Carga_Rapida.jpg", alt: "Cargador Rápido" },
-    { src: "img/Mouse_Gamer_Logitech_G502.jpg", alt: "Mouse Gamer" },
-    { src: "img/Teclado_Mecanico_Logitech_ProXG.jpg", alt: "Teclado Mecánico" }
-];
-
-let currentIndex = 0;
-
-function displayImage(index) {
-    const carouselImage = document.getElementById('carouselImage');
-    carouselImage.src = images[index].src;
-    carouselImage.alt = images[index].alt;
 }
 
 function moveCarousel(direction) {
     currentIndex = (currentIndex + direction + images.length) % images.length;
-    displayImage(currentIndex);
+    const carouselImage = document.getElementById('carouselImage');
+    carouselImage.src = images[currentIndex];
+    carouselImage.alt = `Imagen del carrusel ${currentIndex + 1}`;
 }
-
-displayImage(currentIndex);
